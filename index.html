@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MBC Laboratory</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@next/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Poppins:wght@300;400;600;700;800&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+            overflow-x: hidden; /* Prevent horizontal scroll from AOS animations */
+        }
+        .highlight {
+            color: #063970;
+        }
+        .hero-section {
+            background: linear-gradient(to bottom right, #e8f0ff, #ffffff);
+            padding: 100px 0;
+            text-align: center;
+        }
+        .hero-img {
+            max-width: 200px;
+        }
+        .navbar-logo {
+            height: 80px;
+        }
+
+        /* Gaya untuk judul "Tentang Kami", "Visi dan Misi", "Layanan Kami" */
+        .section-title {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 2.5rem;
+            color: #000000;
+            margin-bottom: 2.5rem;
+            text-align: center;
+        }
+        .section-title .highlight-text {
+            color: #063970;
+        }
+
+        /* Gaya untuk Hero Heading (sesuai gambar "Welcome to MBC Laboratory Practicum Gallery") */
+        .hero-heading {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            color: #000000;
+            line-height: 1.2;
+            font-size: 3rem; /* Ukuran default untuk heading */
+            margin-bottom: 20px; /* Tambah spasi bawah */
+        }
+        .hero-heading .sub-text {
+            font-weight: 700; /* Dibuat bold */
+            font-size: 1.5rem;
+            display: block;
+            margin-bottom: 10px;
+        }
+        .hero-heading .highlight-block {
+            background-color: #063970;
+            color: #ffffff;
+            padding: 5px 15px;
+            border-radius: 5px;
+            display: inline-block;
+            margin: 0 5px;
+        }
+        .hero-heading .gallery-text { /* Untuk teks 'Gallery' */
+            font-weight: 700; /* Bold */
+            color: #000000; /* Hitam */
+            display: inline-block;
+        }
+
+
+        /* Responsiveness untuk ukuran font hero heading */
+        @media (min-width: 768px) {
+            .hero-heading {
+                font-size: 4rem;
+            }
+            .hero-heading .sub-text {
+                font-size: 1.8rem;
+            }
+        }
+
+        /* Gaya untuk Bagian "More than just Teaching or Learning" */
+        .content-section {
+            text-align: center;
+            padding: 60px 0;
+            background-color: #f8f9fa;
+        }
+        .content-section .main-headline {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #000000;
+            line-height: 1.3;
+            margin-bottom: 15px;
+        }
+        .content-section .main-headline .blue-italic-bold {
+            color: #063970;
+            font-style: italic;
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+        }
+        .content-section .bigger-text {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: #063970;
+            margin-top: 0;
+            margin-bottom: 50px;
+        }
+        .content-section p {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: #333333;
+            max-width: 800px; /* Batasi lebar untuk keterbacaan */
+            margin: 0 auto; /* Tengahkankan paragraf */
+            text-align: justify; /* Rata kiri-kanan */
+        }
+        .content-section p strong {
+            font-weight: 700;
+        }
+        .content-section p .blue-italic-bold-para {
+            color: #063970;
+            font-weight: 700;
+            font-style: italic;
+        }
+        .content-section p .bold-black { /* CSS baru untuk bold dan hitam */
+            color: #000000;
+            font-weight: 700;
+        }
+
+        /* Responsiveness for content section */
+        @media (max-width: 767.98px) {
+            .content-section .main-headline {
+                font-size: 2.2rem;
+            }
+            .content-section .bigger-text {
+                font-size: 2.8rem;
+                margin-bottom: 30px;
+            }
+            .content-section p {
+                font-size: 1rem;
+                /* text-align: left; /* Sesuaikan jika ingin rata kiri di mobile */
+            }
+        }
+
+        /* Gaya untuk LAYANAN KAMI - Cards */
+        .service-card {
+            background-color: #ffffff;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+        .service-card .icon-wrapper {
+            font-size: 3.5rem;
+            color: #063970;
+            margin-bottom: 20px;
+            line-height: 1;
+        }
+        .service-card h5 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            color: #000000;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+        .service-card p {
+            font-size: 0.95rem;
+            color: #555555;
+            line-height: 1.6;
+            text-align: center;
+            flex-grow: 1;
+        }
+        #layanan .row > .col-md-6 {
+            margin-bottom: 30px;
+        }
+        #layanan .row {
+            margin-top: 30px;
+        }
+
+        /* Responsive untuk card services */
+        @media (max-width: 991.98px) {
+            .service-card {
+                padding: 25px;
+            }
+            .service-card .icon-wrapper {
+                font-size: 3rem;
+            }
+            .service-card h5 {
+                font-size: 1.2rem;
+            }
+            .service-card p {
+                font-size: 0.9rem;
+            }
+        }
+        @media (max-width: 575.98px) {
+            .service-card {
+                padding: 20px;
+            }
+            .service-card .icon-wrapper {
+                font-size: 2.5rem;
+            }
+            .service-card h5 {
+                font-size: 1.1rem;
+            }
+            .service-card p {
+                font-size: 0.85rem;
+            }
+        }
+
+        /* Gaya khusus untuk section Divisi */
+        .divisi-section {
+            padding: 80px 0;
+            background-color: #f8f9fa; /* Warna latar belakang abu-abu muda */
+        }
+        .divisi-section .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .divisi-row {
+            margin-bottom: 60px; /* Spasi antar baris divisi */
+            align-items: center; /* Tengahkan item secara vertikal */
+        }
+        .divisi-row:last-child {
+            margin-bottom: 0; /* Hapus margin bawah untuk baris terakhir */
+        }
+        .divisi-section .divisi-card {
+            background-color: #ffffff;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+        }
+        .divisi-section .divisi-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+        .divisi-section .divisi-card .icon-wrapper {
+            font-size: 3.5rem;
+            color: #063970;
+            margin-bottom: 20px;
+            line-height: 1;
+        }
+        .divisi-section .divisi-card h5 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            color: #000000;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+        .divisi-section .divisi-card p {
+            font-size: 0.95rem;
+            color: #555555;
+            line-height: 1.6;
+            text-align: center;
+            flex-grow: 1;
+        }
+        .video-content-divisi {
+            text-align: center;
+        }
+        .video-wrapper-divisi {
+            position: relative;
+            padding-bottom: 125%; /* Rasio 4:5, cocok untuk banyak Instagram Reel */
+            height: 0;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            background-color: #000; /* Fallback background for video area */
+        }
+        .video-wrapper-divisi iframe,
+        .video-wrapper-divisi video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        @media (max-width: 767.98px) {
+            .divisi-row {
+                flex-direction: column; /* Tumpuk vertikal di mobile */
+            }
+            .divisi-row.flex-md-row-reverse .col-lg-6:first-child {
+                order: 2; /* Pindah teks ke bawah video untuk row genap di mobile */
+            }
+            .divisi-row.flex-md-row-reverse .col-lg-6:last-child {
+                order: 1; /* Pindah video ke atas teks untuk row genap di mobile */
+            }
+        }
+
+
+        /* Gaya untuk Section "Tentang Kami" yang baru */
+        .about-us-section {
+            padding: 80px 0;
+            background-color: #ffffff;
+        }
+        .about-us-content {
+            display: flex;
+            flex-wrap: wrap; /* Allow wrapping on smaller screens */
+            align-items: center;
+            gap: 40px; /* Spasi antar gambar dan teks */
+        }
+        .about-us-content .text-content {
+            flex: 1;
+            min-width: 300px; /* Minimum width before wrapping */
+        }
+        .about-us-content .video-content { /* Changed from .image-content to .video-content */
+            flex: 1;
+            text-align: center;
+            min-width: 300px; /* Minimum width before wrapping */
+        }
+        .about-us-content .video-wrapper { /* New wrapper for responsive video */
+            position: relative;
+            /* Disesuaikan padding-bottom untuk rasio 4:5 (tinggi / lebar * 100%) */
+            /* Jika Reel Anda 9:16 (vertikal penuh), gunakan 177.77% */
+            /* Jika Reel Anda 4:5 (kotak), gunakan 125% */
+            /* Jika Reel Anda 16:9 (horizontal), gunakan 56.25% */
+            padding-bottom: 125%; /* Coba rasio 4:5 */
+            height: 0;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            background-color: #000; /* Fallback background for video area */
+        }
+        .about-us-content .video-wrapper iframe,
+        .about-us-content .video-wrapper video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        /* Menyesuaikan text-align judul "Tentang Kami" untuk section ini */
+        .about-us-section h2.section-title {
+            text-align: left;
+            margin-left: 15px; /* Sesuaikan dengan padding container jika perlu */
+        }
+        @media (max-width: 767.98px) {
+            .about-us-section h2.section-title {
+                text-align: center; /* Kembali ke tengah di mobile */
+                margin-left: 0;
+            }
+            .about-us-content {
+                flex-direction: column; /* Stack vertically on small screens */
+                text-align: center;
+            }
+            .about-us-content .text-content {
+                order: 2; /* Pindah teks ke bawah gambar di mobile */
+            }
+            .about-us-content .video-content { /* Changed from .image-content to .video-content */
+                order: 1; /* Pindah video ke atas teks di mobile */
+            }
+        }
+
+
+        /* Gaya untuk "Partners in Your Growth" section */
+        .partners-section {
+            background-color: #063970; /* Warna biru sesuai gambar */
+            color: #ffffff;
+            padding: 80px 0;
+            text-align: center;
+        }
+        .partners-section h2 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 800; /* Extra Bold */
+            font-size: 3.5rem; /* Ukuran besar */
+            line-height: 1.2;
+            margin-bottom: 0;
+        }
+        .partners-section h2 .highlight-word {
+            color: #fddb00; /* Warna kuning atau terang lainnya jika ada di logo/brand */
+        }
+        /* Responsiveness untuk partners section */
+        @media (max-width: 767.98px) {
+            .partners-section h2 {
+                font-size: 2.5rem;
+            }
+        }
+
+        /* Gaya untuk Statistik/Poin Kunci */
+        .stats-section {
+            padding: 60px 0;
+            background-color: #f0f4f8; /* Latar belakang abu-abu muda */
+            text-align: center;
+        }
+        .stat-item {
+            margin-bottom: 30px;
+        }
+        .stat-item .stat-number {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: #000000; /* Mengubah warna teks angka menjadi hitam */
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+        .stat-item .stat-label {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #555;
+        }
+        /* Responsiveness untuk stats section */
+        @media (max-width: 767.98px) {
+            .stat-item .stat-number {
+                font-size: 2.8rem;
+            }
+            .stat-item .stat-label {
+                font-size: 1rem;
+            }
+        }
+
+        /* Gaya khusus untuk section Visi dan Misi */
+        .vision-mission-section {
+            padding: 60px 0; /* Sesuaikan padding agar konsisten */
+            background-color: #ffffff; /* Latar belakang putih */
+        }
+        .vision-mission-section p {
+            font-size: 1.15rem; /* Sesuaikan ukuran font agar konsisten */
+            line-height: 1.8; /* Sesuaikan line-height */
+            color: #333333;
+            max-width: 800px; /* Batasi lebar agar tidak terlalu panjang */
+            margin: 0 auto; /* Tengahkankan paragraf */
+            text-align: justify; /* Rata kiri-kanan */
+        }
+        .vision-mission-section p strong {
+            color: #000000; /* Pastikan teks "Visi" dan "Misi" berwarna hitam */
+        }
+
+        @media (max-width: 767.98px) {
+            .vision-mission-section p {
+                font-size: 1rem; /* Sesuaikan ukuran font di mobile */
+                text-align: left; /* Mungkin lebih baik rata kiri di mobile */
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="img/logo.png" alt="MBC Lab Logo" class="navbar-logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#divisi-section">Divisi</a></li>
+                    <li class="nav-item"><a class="nav-link" href="kontak.html">Kontak</a></li>
+                    <li class="nav-item"><a class="nav-link" href="developer.html">Developer</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-section" data-aos="fade-up">
+        <div class="container">
+            <h1 class="hero-heading">
+                <span class="sub-text">Welcome to</span>
+                MBC Laboratory
+                <span class="highlight-block">Practicum</span>
+            </h1>
+            <p class="lead">Pusat Riset Teknologi dan Konsultan berbasis edukasi, inovasi, dan teknologi.</p>
+            <a href="#layanan" class="btn btn-primary mt-3">Lihat Layanan Kami</a>
+        </div>
+    </section>
+
+    <main>
+        <section class="about-us-section" data-aos="fade-up">
+            <div class="container">
+                <h2 class="section-title">Tentang <span class="highlight-text">Kami</span></h2>
+                <div class="row about-us-content">
+                    <div class="col-md-6 text-content">
+                        <p>Hai kamu! 👋 Pernah kepikiran gak, gimana rasanya gabung di lingkungan yang gak cuma ngajarin teori, tapi juga ngajak kamu langsung terjun ke dunia teknologi yang sesungguhnya?<br><br>Kenalin, <strong>MBC Laboratory</strong> — tempatnya mahasiswa kreatif yang pengen eksplor lebih jauh tentang <strong>Cybersecurity, Big Data, Game Technology, dan Geographic Information Systems (GIS)</strong> secara real dan menyenangkan.<br><br>Di sini, kamu gak cuma diajak belajar, tapi juga diajak ngoding, riset bareng, bikin modul praktikum, sampai ikut program yang relevan sama kuliah kamu kayak Keamanan Data & Blockchain.<br><br>So, kalau kamu suka tantangan, pengen upgrade skill, dan pengen gabung di komunitas teknologi yang solid dan suportif — MBC Lab siap jadi tempat kamu bertumbuh bareng! 🚀✨.</p>
+                    </div>
+                    <div class="col-md-6 video-content" data-aos="fade-left">
+                        <div class="video-wrapper">
+                            <iframe src="https://www.instagram.com/reel/DC_K8RgpAlp/embed/" width="100%" height="100%" frameborder="0" scrolling="no" allowtransparency="true" allowfullscreen="true" title="Instagram Reel"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section" data-aos="fade-up">
+            <div class="container">
+                <h2 class="main-headline">
+                    More than just <span class="blue-italic-bold">Teaching</span> or <span class="blue-italic-bold">Learning</span>
+                </h2>
+                <h2 class="bigger-text">
+                    It's something BIGGER
+                </h2>
+                <p>
+                    Menjadi asisten praktikum di lab <span class="blue-italic-bold-para">Multimedia, Big Data, & Cyber Security</span>
+                    (MBC) jauh <span class="bold-black">lebih dari sekadar mengajar</span> dan mendapatkan honorarium.
+                    Ada berbagai keuntungan dan pengalaman berharga yang bisa
+                    didapatkan, terutama di MBC Laboratory yang dapat membantu
+                    <span class="bold-black">perkembanganmu</span> baik itu <span class="bold-black">softskill atau hardskill</span>.
+                </p>
+            </div>
+        </section>
+
+        <section class="partners-section" data-aos="fade-up">
+            <div class="container">
+                <h2>MBC Laboratory is a <span class="highlight-word">Partners</span> in Your <span class="highlight-word">Growth</span></h2>
+            </div>
+        </section>
+
+        <section class="stats-section" id="stats-counter-section">
+            <div class="container">
+                <h2 class="section-title">Pencapaian <span class="highlight-text">Kami</span></h2>
+                <div class="row">
+                    <div class="col-md-4 col-sm-6 stat-item" data-aos="zoom-in" data-aos-delay="100">
+                        <div class="stat-number" data-target="200">0</div>
+                        <div class="stat-label bold-black">Mahasiswa Berkontribusi</div>
+                    </div>
+                    <div class="col-md-4 col-sm-6 stat-item" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="stat-number" data-target="10">0</div>
+                        <div class="stat-label bold-black">Proyek Riset Inovatif</div>
+                    </div>
+                    <div class="col-md-4 col-sm-6 stat-item" data-aos="zoom-in" data-aos-delay="300">
+                        <div class="stat-number" data-target="6">0</div>
+                        <div class="stat-label bold-black">Layanan Unggulan</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="vision-mission-section" data-aos="fade-up">
+            <div class="container">
+                <h2 class="section-title">Visi dan <span class="highlight-text">Misi</span></h2>
+                <div class="row justify-content-center">
+                    <div class="col-lg-8"> <p class="mb-3"><strong>Visi:</strong> Menjadi pusat inovasi teknologi kampus yang bukan hanya keren secara ide, tapi juga berdampak nyata dan berkelanjutan—baik untuk mahasiswa, masyarakat, maupun dunia teknologi ke depannya.</p>
+                        <p><strong>Misi:</strong> Mengembangkan solusi teknologi yang relevan, meningkatkan kompetensi mahasiswa, dan menciptakan ekosistem kolaboratif yang mendukung pengembangan riset dan praktikum.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="layanan" class="my-5" data-aos="fade-up">
+            <div class="container">
+                <h2 class="section-title">Layanan <span class="highlight-text">Kami</span></h2>
+                <div class="row justify-content-center">
+                    <div class="col-lg-4 col-md-6 mb-4 d-flex">
+                        <div class="service-card" data-aos="zoom-in" data-aos-delay="100">
+                            <div class="icon-wrapper">
+                                <i class="fas fa-book"></i>
+                            </div>
+                            <h5>Module Development</h5>
+                            <p>Merancang pengalaman belajar menarik dengan panduan praktis, teori, dan studi kasus inovatif.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-4 d-flex">
+                        <div class="service-card" data-aos="zoom-in" data-aos-delay="200">
+                            <div class="icon-wrapper">
+                                <i class="fas fa-laptop-code"></i>
+                            </div>
+                            <h5>Practicum Development</h5>
+                            <p>Merancang alur praktikum terstruktur dengan teknologi terbaru yang sesuai kebutuhan pembelajaran.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-4 d-flex">
+                        <div class="service-card" data-aos="zoom-in" data-aos-delay="300">
+                                <div class="icon-wrapper">
+                                <i class="fas fa-chalkboard-teacher"></i>
+                            </div>
+                            <h5>Training of Trainer</h5>
+                            <p>Membekali kemampuan menyampaikan materi secara interaktif dan mengembangkan komunikasi & kepemimpinan.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-4 d-flex">
+                        <div class="service-card" data-aos="zoom-in" data-aos-delay="400">
+                            <div class="icon-wrapper">
+                                <i class="fas fa-map-marked-alt"></i>
+                            </div>
+                            <h5>TechRoadMap</h5>
+                            <p>Menjabarkan progres, target, tantangan, dan sharing session antar asisten secara berkala.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-4 d-flex">
+                        <div class="service-card" data-aos="zoom-in" data-aos-delay="500">
+                            <div class="icon-wrapper">
+                                <i class="fas fa-cogs"></i>
+                            </div>
+                            <h5>Workshop & Bootcamp</h5>
+                            <p>Mendukung pengembangan softskill dan hardskill melalui event internal MBC secara gratis.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-4 d-flex">
+                        <div class="service-card" data-aos="zoom-in" data-aos-delay="600">
+                            <div class="icon-wrapper">
+                                <i class="fas fa-building"></i>
+                            </div>
+                            <h5>Company Visit</h5>
+                            <p>Mendukung relasi dan koneksi karier melalui kunjungan industri yang difasilitasi oleh MBC Lab.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+       <section id="divisi-section" class="divisi-section" data-aos="fade-up">
+            <div class="container">
+                <h2 class="section-title">Divisi <span class="highlight-text">Kami</span></h2>
+                
+                <div class="row justify-content-center divisi-row">
+                    <div class="col-lg-6 col-md-6 mb-4 d-flex" data-aos="fade-right">
+                        <div class="divisi-card">
+                            <div class="icon-wrapper">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h5>Cybersecurity</h5>
+                            <p>Fokus pada keamanan sistem informasi, jaringan, dan data, mencakup pencegahan, deteksi, dan penanganan serangan siber.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 mb-4 video-content-divisi" data-aos="fade-left">
+                        <div class="video-wrapper-divisi">
+                            <iframe src="https://www.instagram.com/p/DLUaDgjJyDU/embed/" width="100%" height="100%" frameborder="0" scrolling="no" allowtransparency="true" allowfullscreen="true" title="Cybersecurity Reel"></iframe>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row justify-content-center divisi-row flex-md-row-reverse">
+                    <div class="col-lg-6 col-md-6 mb-4 d-flex" data-aos="fade-left">
+                        <div class="divisi-card">
+                            <div class="icon-wrapper">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <h5>Big Data</h5>
+                            <p>Mempelajari pengolahan dan analisis dataset berukuran besar untuk mendapatkan wawasan berharga dan mendukung pengambilan keputusan.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 mb-4 video-content-divisi" data-aos="fade-right">
+                        <div class="video-wrapper-divisi">
+                            <iframe src="https://www.instagram.com/p/DLUOBt-JJmC/embed/" width="100%" height="100%" frameborder="0" scrolling="no" allowtransparency="true" allowfullscreen="true" title="Big Data Reel"></iframe>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row justify-content-center divisi-row">
+                    <div class="col-lg-6 col-md-6 mb-4 d-flex" data-aos="fade-right">
+                        <div class="divisi-card">
+                                <div class="icon-wrapper">
+                                <i class="fas fa-gamepad"></i>
+                            </div>
+                            <h5>Game Technology</h5>
+                            <p>Mengembangkan keterampilan dalam desain, pengembangan, dan pemrograman game, termasuk grafis, logika game, dan interaktivitas.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 mb-4 video-content-divisi" data-aos="fade-left">
+                        <div class="video-wrapper-divisi">
+                            <iframe src="https://www.instagram.com/p/DLT5kzlpMkn/embed/" width="100%" height="100%" frameborder="0" scrolling="no" allowtransparency="true" allowfullscreen="true" title="Game Technology Reel"></iframe>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row justify-content-center divisi-row flex-md-row-reverse">
+                    <div class="col-lg-6 col-md-6 mb-4 d-flex" data-aos="fade-left">
+                        <div class="divisi-card">
+                            <div class="icon-wrapper">
+                                <i class="fas fa-globe-americas"></i>
+                            </div>
+                            <h5>Geographic Information Systems (GIS)</h5>
+                            <p>Menjelajahi penggunaan sistem untuk mengumpulkan, mengelola, menganalisis, dan memetakan semua jenis data spasial.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 mb-4 video-content-divisi" data-aos="fade-right">
+                        <div class="video-wrapper-divisi">
+                            <iframe src="https://www.instagram.com/p/DLUEVhXp4VX/embed/" width="100%" height="100%" frameborder="0" scrolling="no" allowtransparency="true" allowfullscreen="true" title="GIS Reel"></iframe>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        </main>
+
+    <footer class="bg-dark text-white text-center py-3">
+        &copy; 2025 MBC Laboratory - All rights reserved.
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        // Inisialisasi AOS. Hapus `once: true` agar animasi AOS berulang.
+        AOS.init({
+            duration: 1000, // Durasi animasi
+            // once: true,     // Hapus baris ini jika Anda ingin semua animasi AOS berulang
+        });
+
+        // Fungsi untuk mereset dan menjalankan animasi angka
+        function animateNumbers(entries, observer) {
+            entries.forEach(entry => {
+                const statNumbers = entry.target.querySelectorAll('.stat-number');
+                if (entry.isIntersecting) {
+                    // Hanya jalankan animasi jika elemen belum pernah dianimasikan dalam sesi ini
+                    // atau jika kita ingin selalu mengulang saat masuk viewport
+                    statNumbers.forEach(stat => {
+                        // Reset angka ke 0 sebelum memulai animasi
+                        stat.innerText = '0'; // Tampilkan '0' di awal
+                        const target = parseInt(stat.dataset.target);
+                        const duration = 2000; // milliseconds
+                        let start = 0;
+                        const increment = target / (duration / 10);
+                        let currentInterval; // Untuk menyimpan referensi interval
+
+                        // Hapus interval sebelumnya jika ada
+                        if (stat.dataset.intervalId) {
+                            clearInterval(parseInt(stat.dataset.intervalId));
+                        }
+
+                        currentInterval = setInterval(() => {
+                            start += increment;
+                            if (start >= target) {
+                                stat.innerText = target + (stat.dataset.target === "200" ? "+" : (stat.dataset.target === "10" ? "+" : ""));
+                                clearInterval(currentInterval);
+                                stat.dataset.intervalId = ''; // Kosongkan ID interval
+                            } else {
+                                stat.innerText = Math.ceil(start);
+                            }
+                        }, 10);
+                        stat.dataset.intervalId = currentInterval; // Simpan ID interval
+                    });
+                } else {
+                    // Opsional: Reset angka ke 0 saat keluar viewport
+                    statNumbers.forEach(stat => {
+                        stat.innerText = '0';
+                        // Hentikan interval jika masih berjalan saat elemen keluar viewport
+                        if (stat.dataset.intervalId) {
+                            clearInterval(parseInt(stat.dataset.intervalId));
+                            stat.dataset.intervalId = '';
+                        }
+                    });
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.5 // Trigger when 50% of the section is visible
+            };
+
+            const observer = new IntersectionObserver(animateNumbers, observerOptions);
+
+            // Observe the stats section
+            const statsSection = document.getElementById('stats-counter-section');
+            if (statsSection) {
+                observer.observe(statsSection);
+            }
+
+            // Smooth scroll for internal links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

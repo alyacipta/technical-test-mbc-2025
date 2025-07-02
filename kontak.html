@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MBC Laboratory</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@next/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Poppins:wght@300;400;600;700;800&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+            overflow-x: hidden; /* Prevent horizontal scroll from AOS animations */
+            background-color: #f8f9fa; /* Latar belakang body sedikit abu-abu */
+        }
+        .highlight {
+            color: #063970;
+        }
+        .navbar-logo {
+            height: 80px; /* Sesuaikan tinggi logo agar konsisten */
+        }
+        .section-title {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 2.5rem;
+            color: #000000;
+            margin-bottom: 2.5rem;
+            text-align: center;
+        }
+        .section-title .highlight-text {
+            color: #063970;
+        }
+        .form-label {
+            font-weight: 600;
+        }
+        .btn-primary {
+            background-color: #063970;
+            border-color: #063970;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: #042a53;
+            border-color: #042a53;
+        }
+
+        /* Responsive untuk section-title */
+        @media (max-width: 767.98px) {
+            .section-title {
+                font-size: 2rem;
+                margin-bottom: 2rem;
+            }
+        }
+
+        /* Gaya tambahan untuk interaktivitas */
+        .contact-info-card {
+            background-color: #ffffff;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .contact-info-card .icon-wrapper {
+            font-size: 2rem;
+            color: #063970;
+            margin-right: 15px;
+            width: 40px; /* Lebar tetap untuk ikon */
+            text-align: center;
+        }
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .contact-detail:last-child {
+            margin-bottom: 0;
+        }
+        .contact-detail p {
+            margin-bottom: 0;
+            font-size: 1.1rem;
+            color: #555;
+        }
+        .contact-detail a {
+            color: #063970;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .contact-detail a:hover {
+            color: #042a53;
+        }
+
+        .map-container {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            margin-top: 20px; /* Spasi dari info kontak di atasnya */
+        }
+        /* Style untuk form kontainer */
+        .contact-form-card {
+            background-color: #ffffff;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            height: 100%;
+        }
+
+        /* Alert styling */
+        #formMessage {
+            margin-top: 20px;
+        }
+
+        /* Responsive adjustments for contact details */
+        @media (max-width: 991.98px) {
+            .contact-info-card {
+                padding: 25px;
+            }
+            .contact-detail {
+                flex-direction: column; /* Stack icon and text vertically */
+                align-items: flex-start; /* Align text to start */
+            }
+            .contact-detail .icon-wrapper {
+                margin-right: 0;
+                margin-bottom: 10px; /* Space between icon and text */
+            }
+            .contact-detail p {
+                text-align: left;
+            }
+            .map-container {
+                margin-top: 30px; /* More space on smaller screens if stacked */
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="img/logo.png" alt="MBC Lab Logo" class="navbar-logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#divisi-section">Divisi</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="kontak.html">Kontak</a></li>
+                    <li class="nav-item"><a class="nav-link" href="developer.html">Developer</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container my-5">
+        <h1 class="section-title" data-aos="fade-up">Hubungi <span class="highlight-text">Kami</span></h1>
+
+        <div class="row g-4 mb-5">
+            <div class="col-md-6" data-aos="fade-right" data-aos-delay="200">
+                <div class="contact-info-card">
+                    <h5 class="fw-bold mb-4">Informasi Kontak Kami</h5>
+                    <div class="contact-detail">
+                        <span class="icon-wrapper"><i class="fas fa-map-marker-alt"></i></span>
+                        <div>
+                            <p class="fw-bold">Alamat</p>
+                            <p>TULT 13.04<br>TULT 11.12</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-detail">
+                        <span class="icon-wrapper"><i class="fas fa-phone-alt"></i></span>
+                        <div>
+                            <p class="fw-bold">Telepon</p>
+                            <p>+62 822-1125-5319</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-detail">
+                        <span class="icon-wrapper"><i class="fas fa-envelope"></i></span>
+                        <div>
+                            <p class="fw-bold">Email</p>
+                            <p><a href="mailto:mbclab1234@gmail.com" class="text-decoration-none">mbclab1234@gmail.com</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6" data-aos="fade-left" data-aos-delay="300">
+                <div class="contact-form-card">
+                    <h5 class="fw-bold mb-4">Kirim Pesan Kepada Kami</h5>
+                    <form id="contactForm">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Nama</label>
+                            <input type="text" class="form-control" id="name" name="name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Pesan</label>
+                            <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Kirim Pesan</button>
+                    </form>
+                    <div id="formMessage" class="mt-3"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" data-aos="fade-up" data-aos-delay="400">
+            <div class="col-12">
+                <h5 class="fw-bold text-center mb-3">Lihat Lokasi Kami di Peta</h5>
+                <div class="map-container">
+                    <div class="ratio ratio-21x9" style="min-height: 400px;">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.3074993639957!2d107.62911047358755!3d-6.973001668275838!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e9adc31f2597%3A0x13a10c216567562!2sTerusan%20Buah%20Batu%20Jl.%20Telekomunikasi%20No.1%2C%20Sukapura%2C%20Kec.%20Dayeuhkolot%2C%20Kabupaten%20Bandung%2C%20Jawa%20Barat%2040257!5e0!3m2!1sen!2sid!4v1751430249274!5m2!1sen!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-dark text-white text-center py-3 mt-5">
+        © 2025 MBC Laboratory - All rights reserved.
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            once: true,
+            duration: 1000,
+            easing: 'ease-out-back',
+        });
+
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Mencegah submit form secara default
+
+            const form = event.target;
+            const formData = new FormData(form);
+            const formMessage = document.getElementById('formMessage');
+            const submitButton = form.querySelector('button[type="submit"]');
+
+            formMessage.innerHTML = ''; // Clear previous messages
+            submitButton.disabled = true; // Disable button to prevent multiple submissions
+            submitButton.textContent = 'Mengirim...';
+
+            fetch('backend/send_email.php', { // Ganti dengan path ke file PHP Anda
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    formMessage.innerHTML = `<div class="alert alert-success">${data.message}</div>`;
+                    form.reset(); // Reset form jika berhasil
+                } else {
+                    formMessage.innerHTML = `<div class="alert alert-danger">${data.message}</div>`;
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                formMessage.innerHTML = `<div class="alert alert-danger">Terjadi kesalahan saat mengirim pesan.</div>`;
+            })
+            .finally(() => {
+                submitButton.disabled = false; // Re-enable button
+                submitButton.textContent = 'Kirim Pesan';
+            });
+        });
+    </script>
+</body>
+</html>

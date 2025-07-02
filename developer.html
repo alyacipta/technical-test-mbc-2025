@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MBC Laboratory</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@next/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Poppins:wght@300;400;600;700;800&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif; /* Konsisten dengan halaman lain */
+            color: #333;
+            overflow-x: hidden; /* Mencegah scroll horizontal dari AOS */
+            background-color: #f8f9fa; /* Latar belakang body sedikit abu-abu */
+        }
+        .highlight {
+            color: #063970;
+        }
+        .navbar-logo {
+            height: 80px; /* Sesuaikan tinggi logo agar konsisten */
+        }
+        /* Gaya untuk judul section */
+        .section-title {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 2.5rem;
+            color: #000000;
+            margin-bottom: 2.5rem;
+            text-align: center;
+        }
+        .section-title .highlight-text {
+            color: #063970;
+        }
+
+        /* Gaya khusus untuk card developer */
+        .developer-card {
+            background-color: #ffffff;
+            border-radius: 15px;
+            padding: 40px; /* Padding lebih besar */
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); /* Bayangan lebih kuat */
+            border: none; /* Hilangkan border default card */
+            transition: transform 0.3s ease; /* Animasi hover */
+            text-align: center; /* Teks di tengah */
+        }
+        .developer-card:hover {
+            transform: translateY(-5px); /* Efek angkat saat hover */
+        }
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #063970;
+            margin-bottom: 25px;
+            box-shadow: 0 0 0 7px rgba(6, 57, 112, 0.2); /* Efek ring di sekitar gambar */
+        }
+        .developer-name {
+            font-family: 'Montserrat', sans-serif; /* Font berbeda untuk nama */
+            font-weight: 800;
+            color: #063970;
+            margin-bottom: 15px;
+            font-size: 2.2rem;
+        }
+        .developer-description {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #555;
+            margin-bottom: 30px;
+        }
+        .competence-list {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px; /* Jarak antar badge */
+            margin-bottom: 30px;
+        }
+        .competence-list li {
+            margin: 0; /* Pastikan tidak ada margin tambahan dari li */
+        }
+        .competence-badge {
+            background-color: #e0e7f1; /* Warna background badge */
+            color: #063970; /* Warna teks badge */
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            white-space: nowrap; /* Mencegah teks badge pecah baris */
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .competence-badge:hover {
+            background-color: #063970;
+            color: #ffffff;
+        }
+        .social-link {
+            font-size: 1.2rem;
+            color: #063970;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            display: inline-flex; /* Agar ikon dan teks sejajar */
+            align-items: center;
+        }
+        .social-link:hover {
+            color: #042a53;
+        }
+        .social-link i {
+            margin-right: 8px;
+        }
+
+        /* Responsive untuk section-title */
+        @media (max-width: 767.98px) {
+            .section-title {
+                font-size: 2rem;
+                margin-bottom: 2rem;
+            }
+            .developer-card {
+                padding: 30px;
+            }
+            .developer-name {
+                font-size: 1.8rem;
+            }
+            .developer-description {
+                font-size: 1rem;
+            }
+            .profile-img {
+                width: 120px;
+                height: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="img/logo.png" alt="MBC Lab Logo" class="navbar-logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#divisi-section">Divisi</a></li>
+                    <li class="nav-item"><a class="nav-link" href="kontak.html">Kontak</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="developer.html">Developer</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container my-5">
+        <h1 class="section-title" data-aos="fade-up">Tim <span class="highlight-text">Pengembang</span></h1>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-10" data-aos="fade-up" data-aos-delay="200">
+                <div class="developer-card">
+                    <h2 class="developer-name">Alya Febriana Cipta</h2>
+                    <p class="developer-description">
+                        Mahasiswa jurusan S1 Teknik Komputer dengan beberapa pengalaman selama di sekolah menengah atas (SMA). Pernah terlibat pada beberapa organisasi selama di SMA, sehingga mengasah kemampuan komunikasi, kerjasama tim, dan kepemimpinan. Pembelajar yang kreatif dan solutif sehingga siap untuk berkontribusi pada MBC Lab.
+                    </p>
+                    
+                    <h5 class="fw-bold mb-3 highlight">Kompetensi Teknis</h5>
+                    <ul class="competence-list">
+                        <li><span class="competence-badge">Problem Solving</span></li>
+                        <li><span class="competence-badge">Team Collaboration</span></li>
+                        <li><span class="competence-badge">Analytical Thinking</span></li>
+                        <li><span class="competence-badge">Public Speaking</span></li>
+                        <li><span class="competence-badge">Time Management</span></li>
+                        <li><span class="competence-badge">Basic Networking (LAN, WAN, IP Addressing)</span></li>
+                        <li><span class="competence-badge">Routing Protocols (RIP, OSPF, EIGRP, Static)</span></li>
+                        <li><span class="competence-badge">Network Simulation (Cisco Packet Tracer)</span></li>
+                        <li><span class="competence-badge">Basic Programming (C, Arduino IDE)</span></li>
+                        <li><span class="competence-badge">Embedded Systems & IoT Fundamentals</span></li>
+                        <li><span class="competence-badge">Basic Cyber Security Concepts</span></li>
+                    </ul>
+                    
+                    <h5 class="fw-bold mb-3 highlight">Tautan</h5>
+                    <p class="mb-0">
+                        <a href="https://github.com/alyacipta" target="_blank" class="social-link">
+                            <i class="fab fa-github"></i> GitHub: alyacipta
+                        </a>
+                    </p>
+                    <p class="mt-2 mb-0">
+                        <a href="https://www.linkedin.com/in/alyacipta" target="_blank" class="social-link">
+                            <i class="fab fa-linkedin"></i> LinkedIn: alyacipta
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-dark text-white text-center py-3 mt-5">
+        &copy; 2025 MBC Laboratory - All rights reserved.
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            once: true, // Animasi hanya berjalan sekali saat di-scroll
+            duration: 1000, // Durasi animasi dalam milidetik
+            easing: 'ease-out-back', // Jenis easing animasi
+        });
+    </script>
+</body>
+</html>
