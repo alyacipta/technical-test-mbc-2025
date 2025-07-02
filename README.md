@@ -66,9 +66,9 @@ Formulir kontak menggunakan PHP (`send_email.php`) untuk mengirim email. Untuk m
         smtp_server=smtp.gmail.com
         smtp_port=587
         smtp_ssl=tls
-        auth_username=mbclab1234@gmail.com # Ganti dengan email Anda
+        auth_username=your_email@gmail.com # Ganti dengan email Anda
         auth_password=your_app_password_or_regular_password # Gunakan App Password jika 2FA aktif
-        force_sender=alyacipta217@gmail.com
+        force_sender=your_email@gmail.com
         ```
 
 4.  **Restart Apache** di XAMPP Control Panel setelah menyimpan perubahan.
@@ -86,10 +86,10 @@ Untuk membuat website ini dapat diakses secara publik, Anda akan membutuhkan hos
 
 ## Author
 
-- **Alya Febriana Cipta**
-    - Kompetensi Teknis: Basic Networking (LAN, WAN, IP Addressing, Routing Protocols: RIP, OSPF, EIGRP, Static), Network Simulation (Cisco Packet Tracer), Basic Programming (C, Arduino IDE), Embedded Systems & IoT Fundamentals, Basic Cyber Security Concepts (Malware types, Threat Awareness, Network Defense Basics) 
-    - GitHub: https://github.com/alyacipta 
-    - LinkedIn: https://www.linkedin.com/in/alyacipta 
+- **[Nama Lengkap Anda]**
+    - Kompetensi Teknis: [List kemampuan teknis Anda, misal: HTML, CSS (Bootstrap), JavaScript, PHP, Git]
+    - GitHub: [Link profil GitHub Anda]
+    - LinkedIn: [Link profil LinkedIn Anda]
 
 ---
 *Dibuat sebagai bagian dari Technical Test MBC Laboratory 2025.*
