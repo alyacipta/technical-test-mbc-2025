@@ -12,13 +12,13 @@ Landing page interaktif yang dikembangkan untuk Technical Test MBC Laboratory 20
 
 ## Struktur Proyek
 mbc_website/
-    ├── index.html                  # Halaman Utama & Divisi
-    ├── kontak.html                 # Halaman Kontak
-    ├── developer.html              # Halaman Developer
-    ├── send_email.php              # Backend PHP untuk formulir kontak
-    ├── img/                        # Direktori untuk gambar
-    │   └── logo.png
-    └── README.md                   # Dokumentasi proyek ini
+├── index.html                  # Halaman Utama & Divisi
+├── kontak.html                 # Halaman Kontak
+├── developer.html              # Halaman Developer
+├── send_email.php              # Backend PHP untuk formulir kontak
+├── img/                        # Direktori untuk gambar
+│   └── logo.png
+└── README.md                   # Dokumentasi proyek ini
 
 ## Cara Instalasi Lokal
 
