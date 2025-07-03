@@ -142,7 +142,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="index.html">
-                <img src="img/logo.png" alt="MBC Lab Logo" class="navbar-logo">
+                <img src="img/Logo.png" alt="MBC Lab Logo" class="navbar-logo">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -251,7 +251,7 @@
             submitButton.disabled = true; // Disable button to prevent multiple submissions
             submitButton.textContent = 'Mengirim...';
 
-            fetch('backend/send_email.php', { // Ganti dengan path ke file PHP Anda
+            fetch('send_email.php', { // Ganti dengan path ke file PHP Anda
                 method: 'POST',
                 body: formData
             })
